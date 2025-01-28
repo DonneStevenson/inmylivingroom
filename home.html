@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inmylivingroom - Your Home Away From Home</title>
+    <style>
+        :root {
+            --primary: #4A7865;
+            --secondary: #F5E6D3;
+            --accent: #9B5B4F;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--secondary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--secondary);
+        }
+
+        .event-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5rem;
+        }
+
+        .gallery {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px; /* Adjust the size as needed */
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            flex-shrink: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-controls {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .carousel-controls button {
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">inmylivingroom</h1>
+        <p>Where every gathering feels like home</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h2>Your Perfect Space for Intimate Gatherings</h2>
+            <p>Host your event in a warm, welcoming environment designed to feel just like home</p>
+            <button class="btn">Book Now</button>
+        </div>
+    </div>
+
+    <main class="container">
+        <section id="about">
+            <h2>Why Choose Our Living Room?</h2>
+            <p>At inmylivingroom, we've created the perfect blend of home comfort and event-ready functionality. Our space is ideal for:</p>
+            
+            <div class="event-cards">
+                <div class="card">
+                    <h3>🎉 Private Parties</h3>
+                    <p>Birthdays, celebrations, or just because - no need to clean up your own home!</p>
+                </div>
+                <div class="card">
+                    <h3>💼 Professional Meetings</h3>
+                    <p>Creative workshops, team meetings, or networking events with a cozy vibe</p>
+                </div>
+                <div class="card">
+                    <h3>👶 Personal Milestones</h3>
+                    <p>Baby showers, anniversary parties, or intimate family gatherings</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>What We Offer</h2>
+            <ul>
+                <li>✔️ Comfortable seating for 20-30 guests</li>
+                <li>✔️ Fully equipped kitchenette</li>
+                <li>✔️ Premium audio system</li>
+                <li>✔️ Flexible layout options</li>
+                <li>✔️ Professional cleaning included</li>
+            </ul>
+        </section>
+
+        <section id="gallery">
+            <h2>Our Space</h2>
+            <div class="gallery">
+                <img src="811_2160.jpg" alt="Comfortable seating area" />
+                <img src="915_2160.jpg" alt="Dining space" />
+                <img src="925_2160.jpg" alt="Flexible layout" />
+            </div>
+            <div class="carousel-controls">
+                <button onclick="prevSlide()">Previous</button>
+                <button onclick="nextSlide()">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <h3>Ready to Host?</h3>
+        <p>📞 555-123-4567 | 📍 123 Cozy Street, Your City | ✉️ hello@inmylivingroom.com</p>
+        <p>© 2023 inmylivingroom - Designed with ❤️ for memorable moments</p>
+    </footer>
+
+    <script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.gallery img');
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+        slides.forEach((slide, i) => {
+            slide.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
+        });
+    }
+
+    function nextSlide() {
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentSlide);
+    });
+    </script>
+</body>
+</html>
